@@ -1,0 +1,31 @@
+ROOTCFLAGS    = $(shell $(ROOTSYS)/bin/root-config --cflags)
+ROOTLIBS      = $(shell $(ROOTSYS)/bin/root-config --libs)
+ROOTGLIBS     = $(shell $(ROOTSYS)/bin/root-config --glibs)
+
+CXX  = g++
+CXX += -I./	
+CXX += -I./obj/
+
+CXXFLAGS  = -g -Wall -fPIC -Wno-deprecated -Wmaybe-uninitialized
+CXXFLAGS += $(ROOTCFLAGS)
+
+OUTLIB = ./obj/
+
+#----------------------------------------------------#
+
+all: runacm	
+
+runacm: runacm.cpp obj/acm.o obj/acmbase.o
+	$(CXX) -o runacm runacm.cpp $(OUTLIB)*.o $(ROOTCFLAGS) $(ROOTLIBS) $(ROOTGLIBS)
+
+obj/acm.o: src/acm.cpp src/acm.hh obj/acmbase.o
+	$(CXX) $(CXXFLAGS) -c -I. -o $(OUTLIB)acm.o $<
+
+obj/acmbase.o: src/acmbase.cpp src/acmbase.hh
+	$(CXX) $(CXXFLAGS) -c -I. -o $(OUTLIB)acmbase.o $<
+
+clean:
+	rm -f runacm
+	rm -f *~
+	rm -f src/*~
+	rm -f $(OUTLIB)*.o
