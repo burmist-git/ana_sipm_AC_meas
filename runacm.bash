@@ -11,6 +11,11 @@ function printHelp {
     echo " [0] -24.02.2023_02 : analize data from 24.02.2023_02"
     echo " [0] -24.02.2023_03 : analize data from 24.02.2023_03"
     echo " [0] -24.02.2023_04 : analize data from 24.02.2023_04"
+    echo " [0] -26.02.2023_01 : analize data from 26.02.2023_01"
+    echo " [0] -26.02.2023_02 : analize data from 26.02.2023_02"
+    echo " [0] -26.02.2023_03 : analize data from 26.02.2023_03"
+    echo " [0] -26.02.2023_04 : analize data from 26.02.2023_04"
+    echo " [0] -27.02.2023_03 : analize data from 27.02.2023_03"
     echo " [0] -h             : print help"
 }
 
@@ -47,6 +52,16 @@ else
 	ana ../data/24.02.2023_03/
     elif [ "$1" = "-24.02.2023_04" ]; then
 	ana ../data/24.02.2023_04/
+    elif [ "$1" = "-26.02.2023_01" ]; then
+	ana ../data/26.02.2023_01/
+    elif [ "$1" = "-26.02.2023_02" ]; then
+	ana ../data/26.02.2023_02/
+    elif [ "$1" = "-26.02.2023_03" ]; then
+	ana ../data/26.02.2023_03/
+    elif [ "$1" = "-26.02.2023_04" ]; then
+	ana ../data/26.02.2023_04/
+    elif [ "$1" = "-27.02.2023_03" ]; then
+	time ana ../data/27.02.2023_03/
     elif [ "$1" = "-h" ]; then
         printHelp
     else
